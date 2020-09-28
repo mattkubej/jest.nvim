@@ -1,4 +1,4 @@
-if exists('g:loaded_whid') | finish | endif
+if exists('g:loaded_vim_jest') | finish | endif
 
 let s:save_cpo = &cpo
 set cpo&vim
