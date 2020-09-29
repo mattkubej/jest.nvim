@@ -5,6 +5,7 @@ set cpo&vim
 
 command! Jest lua require'vim_jest'.testProject()
 command! JestCurrent lua require'vim_jest'.testCurrentFile()
+command! JestSingleTest lua require'vim_jest'.testSingleTest()
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
