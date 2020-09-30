@@ -16,7 +16,15 @@ local function test_current_file()
   c_file = vim.api.nvim_eval('expand("%:p")')
 
   create_window()
-  vim.api.nvim_command('terminal npx jest --runTestsByPath ' .. c_file .. ' --watch')
+
+  local t = {}
+  table.insert(t, 'terminal npx jest')
+  table.insert(t, ' --runTestsByPath ')
+  table.insert(t, c_file)
+  table.insert(t, ' --watch')
+  jest_cmd = table.concat(t, '')
+
+  vim.api.nvim_command(jest_cmd)
   vim.api.nvim_command('wincmd p')
 end
 
