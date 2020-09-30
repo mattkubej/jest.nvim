@@ -12,7 +12,7 @@ local function test_project()
   vim.api.nvim_command('wincmd p')
 end
 
-local function test_current_file()
+local function test_file()
   c_file = vim.api.nvim_eval('expand("%:p")')
 
   create_window()
@@ -28,7 +28,7 @@ local function test_current_file()
   vim.api.nvim_command('wincmd p')
 end
 
-local function test_single_test()
+local function test_single()
   c_file = vim.api.nvim_eval('expand("%:p")')
   line = vim.api.nvim_get_current_line()
 
@@ -52,7 +52,7 @@ local function test_single_test()
 end
 
 return {
-  testProject     = test_project,
-  testCurrentFile = test_current_file,
-  testSingleTest  = test_single_test,
+  testProject = test_project,
+  testFile    = test_file,
+  testSingle  = test_single,
 }
