@@ -51,7 +51,6 @@ local function test_single()
 
   local _, _, test_name = string.find(line, "^%s*%a+%(['\"](.+)['\"]")
 
-  -- TODO: add error messaging
   if test_name ~= nil then
     create_window()
 
@@ -62,6 +61,8 @@ local function test_single()
     run_jest(args)
 
     focus_last_accessed_window()
+  else
+    print('ERR: Could not find test name. Place cursor on line with test name.')
   end
 end
 
