@@ -5,9 +5,9 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 " TODO: require only once
-command! Jest lua require'vim_jest'.testProject()
-command! JestFile lua require'vim_jest'.testFile()
-command! JestSingle lua require'vim_jest'.testSingle()
+command! Jest lua require'jest'.testProject()
+command! JestFile lua require'jest'.testFile()
+command! JestSingle lua require'jest'.testSingle()
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
