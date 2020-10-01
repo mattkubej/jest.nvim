@@ -22,4 +22,4 @@ Plug 'kubejm/jest.nvim'
 | ---           | ---                                |
 | `:Jest`       | Run Jest on entire project         |
 | `:JestFile`   | Run Jest on file in current buffer |
-| `:JestSingle` | Run Jest on test under cursor      |
+| `:JestSingle` | Run Jest on test name under cursor |
