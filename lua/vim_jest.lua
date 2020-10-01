@@ -13,9 +13,23 @@ local function focus_last_accessed_window()
   vim.api.nvim_command('wincmd p')
 end
 
+local function run_jest(args)
+  local t = {}
+  table.insert(t, 'terminal npx jest')
+
+  if args ~= nil then
+    for _, v in pairs(args) do
+      table.insert(t, v)
+    end
+  end
+
+  local jest_cmd = table.concat(t, '')
+  vim.api.nvim_command(jest_cmd)
+end
+
 local function test_project()
   create_window()
-  vim.api.nvim_command('terminal npx jest')
+  run_jest()
   focus_last_accessed_window()
 end
 
@@ -23,15 +37,11 @@ local function test_file()
   local c_file = get_current_file_path()
   create_window()
 
-  -- TODO: abstract jest execution
-  local t = {}
-  table.insert(t, 'terminal npx jest')
-  table.insert(t, ' --runTestsByPath ')
-  table.insert(t, c_file)
-  table.insert(t, ' --watch')
-  local jest_cmd = table.concat(t, '')
+  local args = {}
+  table.insert(args, ' --runTestsByPath ' .. c_file)
+  table.insert(args, ' --watch')
+  run_jest(args)
 
-  vim.api.nvim_command(jest_cmd)
   focus_last_accessed_window()
 end
 
@@ -45,16 +55,12 @@ local function test_single()
   if test_name ~= nil then
     create_window()
 
-    local t = {}
-    table.insert(t, 'terminal npx jest')
-    table.insert(t, ' --runTestsByPath ')
-    table.insert(t, c_file)
-    table.insert(t, " -t='")
-    table.insert(t, test_name)
-    table.insert(t, "' --watch")
-    local jest_cmd = table.concat(t, '')
+    local args = {}
+    table.insert(args, ' --runTestsByPath ' .. c_file)
+    table.insert(args, " -t='" .. test_name .. "'")
+    table.insert(args, " --watch")
+    run_jest(args)
 
-    vim.api.nvim_command(jest_cmd)
     focus_last_accessed_window()
   end
 end
