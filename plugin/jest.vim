@@ -1,5 +1,4 @@
-" TODO: validate
-if exists('g:loaded_vim_jest') | finish | endif
+if exists('g:loaded_jest') | finish | endif
 
 let s:save_cpo = &cpo
 set cpo&vim
@@ -12,4 +11,4 @@ command! JestSingle lua require'jest'.testSingle()
 let &cpo = s:save_cpo
 unlet s:save_cpo
 
-let g:loaded_vim_jest = 1
+let g:loaded_jest = 1
