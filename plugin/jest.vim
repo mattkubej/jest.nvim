@@ -1,14 +1,8 @@
-if exists('g:loaded_jest') | finish | endif
-
-let s:save_cpo = &cpo
-set cpo&vim
-
-" TODO: require only once
-command! Jest lua require'jest'.testProject()
-command! JestFile lua require'jest'.testFile()
-command! JestSingle lua require'jest'.testSingle()
-
-let &cpo = s:save_cpo
-unlet s:save_cpo
-
+if exists('g:loaded_jest')
+  finish
+endif
 let g:loaded_jest = 1
+
+command Jest :call jest#test_project()
+command JestFile :call jest#test_file()
+command JestSingle :call jest#test_single()
