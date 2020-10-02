@@ -1,6 +1,3 @@
--- How to get rid of vim warning?
-local vim = vim
-
 local function get_current_file_path()
   return vim.api.nvim_eval('expand("%:p")')
 end
