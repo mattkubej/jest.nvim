@@ -5,6 +5,8 @@ Ability to invoke jest within nvim.
 Inspired by [coc-jest](https://github.com/neoclide/coc-jest), which is
 dependent on coc.nvim.
 
+<img src="https://raw.githubusercontent.com/kubejm/jest.nvim/master/demo.gif" />
+
 ## Requirements
 
 * Neovim
