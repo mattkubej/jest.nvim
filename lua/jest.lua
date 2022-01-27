@@ -12,7 +12,8 @@ end
 
 local function run_jest(args)
   local t = {}
-  table.insert(t, 'terminal npx jest')
+  local cmd = vim.g.jest_cmd or 'npx jest'
+  table.insert(t, 'terminal ' .. cmd)
 
   if args ~= nil then
     for _, v in pairs(args) do
