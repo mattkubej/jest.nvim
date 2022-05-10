@@ -1,18 +1,34 @@
+local M = {}
+
+local config = {
+  jest_cmd = nil,
+  silent = true,
+}
+
 local function get_current_file_path()
-  return vim.api.nvim_eval('expand("%:p")')
+  return vim.fn.expand('%:p')
+end
+
+local function get_current_folder_path()
+  return vim.fn.expand('%:p:h')
 end
 
 local function create_window()
-  vim.api.nvim_command('botright vnew')
+  vim.cmd('botright vnew')
 end
 
 local function focus_last_accessed_window()
-  vim.api.nvim_command('wincmd p')
+  vim.cmd('wincmd p')
+end
+
+local function get_local_jest()
+  local root_dir = vim.fn.finddir('node_modules/..', get_current_folder_path() .. ';')
+  return root_dir .. '/node_modules/jest/bin/jest.js'
 end
 
 local function run_jest(args)
   local t = {}
-  table.insert(t, 'terminal npx jest')
+  table.insert(t, 'terminal ' .. config.jest_cmd)
 
   if args ~= nil then
     for _, v in pairs(args) do
@@ -24,25 +40,40 @@ local function run_jest(args)
   vim.api.nvim_command(jest_cmd)
 end
 
-local function test_project()
+function M.setup(user_data)
+  if user_data ~= nil then
+    config.jest_cmd = user_data.jest_cmd or nil
+  end
+
+  if config.jest_cmd == nil then
+    config.jest_cmd = get_local_jest()
+  end
+end
+
+function M.test_project()
   create_window()
   run_jest()
   focus_last_accessed_window()
 end
 
-local function test_file()
+function M.test_file()
   local c_file = get_current_file_path()
   create_window()
 
   local args = {}
   table.insert(args, ' --runTestsByPath ' .. c_file)
   table.insert(args, ' --watch')
+
+  if config.silent then
+    table.insert(args, ' --silent')
+  end
+
   run_jest(args)
 
   focus_last_accessed_window()
 end
 
-local function test_single()
+function M.test_single()
   local c_file = get_current_file_path()
   local line = vim.api.nvim_get_current_line()
 
@@ -63,8 +94,4 @@ local function test_single()
   end
 end
 
-return {
-  testProject = test_project,
-  testFile    = test_file,
-  testSingle  = test_single,
-}
+return M
