@@ -38,7 +38,6 @@ local function run_jest(args)
 end
 
 function M.setup(user_data)
-  print('setup')
   if user_data ~= nil then
     config.jest_cmd = user_data.jest_cmd or nil
     config.silent = user_data.silent or nil
