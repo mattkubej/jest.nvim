@@ -17,13 +17,13 @@ dependent on coc.nvim.
 ### vim-plug
 
 ```vim
-Plug 'kubejm/jest.nvim'
+Plug 'mattkubej/jest.nvim'
 ```
 
 ### packer.nvim
 
 ```lua
-use 'kubej/jest.nvim'
+use 'mattkubej/jest.nvim'
 ```
 
 ## Default configuration
