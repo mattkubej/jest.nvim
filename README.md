@@ -9,8 +9,8 @@ dependent on coc.nvim.
 
 ## Requirements
 
-* Neovim
-* Jest (within node_modules of working project)
+- Neovim
+- Jest (within node_modules of working project)
 
 ## Installation
 
@@ -42,8 +42,9 @@ require'nvim-jest'.setup {
 
 ## Usage
 
-| Command       | Description                        |
-| ---           | ---                                |
-| `:Jest`       | Run Jest on entire project         |
-| `:JestFile`   | Run Jest on file in current buffer |
-| `:JestSingle` | Run Jest on test name under cursor |
+| Command         | Description                              |
+| --------------- | ---------------------------------------- |
+| `:Jest`         | Run Jest on entire project               |
+| `:JestFile`     | Run Jest on file in current buffer       |
+| `:JestSingle`   | Run Jest on test name under cursor       |
+| `:JestCoverage` | Run Jest on entire project with coverage |

@@ -9,3 +9,7 @@ endfunction
 function nvim_jest#test_single()
   call luaeval('require("nvim-jest").test_single()')
 endfunction
+
+function nvim_jest#test_coverage()
+  call luaeval('require("nvim-jest").test_coverage()')
+endfunction
