@@ -6,21 +6,12 @@ local function get_current_file_path()
   return vim.fn.expand("%:p")
 end
 
-local function get_current_folder_path()
-  return vim.fn.expand("%:p:h")
-end
-
 local function create_window()
   vim.cmd("botright vnew")
 end
 
 local function focus_last_accessed_window()
   vim.cmd("wincmd p")
-end
-
-local function get_local_jest()
-  local root_dir = vim.fn.finddir("node_modules/..", get_current_folder_path() .. ";")
-  return root_dir .. "/node_modules/jest/bin/jest.js"
 end
 
 local function run_jest(args)
@@ -44,7 +35,7 @@ function M.setup(user_data)
   end
 
   if config.jest_cmd == nil then
-    config.jest_cmd = get_local_jest()
+    config.jest_cmd = "npx jest"
   end
 
   if config.silent == nil then
