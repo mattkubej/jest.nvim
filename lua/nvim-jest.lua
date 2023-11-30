@@ -34,7 +34,9 @@ function M.setup(user_data)
     config.silent = user_data.silent or nil
   end
 
-  if config.jest_cmd == nil then
+  if vim.g.jest_cmd ~= nil then
+    config.jest_cmd = vim.g.jest_cmd
+  elseif config.jest_cmd == nil then
     config.jest_cmd = "npx jest"
   end
 
