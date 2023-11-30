@@ -10,7 +10,7 @@ dependent on coc.nvim.
 ## Requirements
 
 - Neovim
-- Jest (within node_modules of working project)
+- NPM
 
 ## Installation
 
@@ -31,8 +31,9 @@ use 'mattkubej/jest.nvim'
 ```lua
 require'nvim-jest'.setup {
   -- Jest executable
-  -- By default finds jest in the relative project directory
-  -- To override with an npm script, provide 'npm test --' or similar
+  -- By default uses 'npx jest'
+  -- To use an npm script, end the command with two dashes: 'npm test --'
+  -- You can also set the global `vim.g.jest_cmd` to override this configuration
   jest_cmd = '/relative/project/dir/node_modules/jest/bin/jest.js',
 
   -- Prevents tests from printing messages
