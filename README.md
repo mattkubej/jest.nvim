@@ -11,7 +11,6 @@ dependent on coc.nvim.
 
 - Neovim
 - NPM
-- Jest (will be ran with `npx` if not found locally)
 
 ## Installation
 
@@ -33,7 +32,8 @@ use 'mattkubej/jest.nvim'
 require'nvim-jest'.setup {
   -- Jest executable
   -- By default uses 'npx jest'
-  -- To override with an npm script, provide 'npm test --' or similar
+  -- To use an npm script, end the command with two dashes: 'npm test --'
+  -- You can also set the global `vim.g.jest_cmd` to override this configuration
   jest_cmd = '/relative/project/dir/node_modules/jest/bin/jest.js',
 
   -- Prevents tests from printing messages
